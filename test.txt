@@ -1,0 +1,64 @@
+Certainly. Here's an English version of the Medium article about the GGML GGUF file format vulnerabilities:
+
+# Critical Vulnerabilities Discovered in GGML GGUF File Format
+
+On March 22, 2024, Neil Archibald revealed several significant security flaws in the GGUF (GGML Unified Format) file format, widely used for storing and loading machine learning model weights. These vulnerabilities could allow an attacker to execute arbitrary code on a victim's computer via a malicious GGUF file.
+
+## What is GGUF?
+
+GGUF is a binary file format designed for fast storage and loading of inference models with the GGML library. It has become particularly popular for distributing pre-trained models, notably Llama-2 variants.
+
+## The Discovered Vulnerabilities
+
+Archibald's analysis uncovered several exploitable heap overflows, mainly due to insufficient input validation when parsing GGUF files. Here's an overview of the key flaws identified:
+
+1. **CVE-2024-25664**: Heap overflow due to unchecked KV count
+2. **CVE-2024-25665**: Overflow when reading string types
+3. **CVE-2024-25666**: Overflow related to unchecked tensor count
+4. **CVE-2024-25667**: Overflow caused by user-supplied array elements
+5. **CVE-2024-25668**: Overflow when unpacking KV string type arrays
+
+Additionally, an unbounded array indexing vulnerability was identified, potentially allowing an attacker to manipulate memory allocation sizes.
+
+## Impact and Exploitation
+
+These vulnerabilities offer powerful primitives for heap exploitation. An attacker could use them to:
+
+- Overwrite adjacent memory with controlled data
+- Manipulate the heap state arbitrarily
+- Potentially execute arbitrary code on the target machine
+
+## Timeline and Resolution
+
+- January 23, 2024: Vulnerabilities reported to the vendor
+- January 25, 2024: CVE request
+- January 28, 2024: Review of fixes on GGML GitHub
+- January 29, 2024: Patches merged into the main branch
+
+Fixes for all mentioned vulnerabilities have been available since commit 6b14d73.
+
+## Conclusion
+
+This discovery underscores the crucial importance of a rigorous approach to security in the rapidly expanding field of machine learning. It highlights the potential risk of using AI models as vectors for malware distribution.
+
+The swift collaboration between Databricks and the GGML.ai team allowed for prompt addressing of these issues, thereby strengthening the security of the GGML ecosystem. Users are strongly recommended to update their GGML libraries to the latest version to protect against these vulnerabilities.
+
+## Implications for the AI Community
+
+This incident serves as a wake-up call for the AI community, emphasizing the need for increased security measures in AI model distribution and usage. As AI models become more prevalent in various applications, ensuring their integrity and the safety of the systems that use them becomes paramount.
+
+Developers and researchers working with GGML and similar libraries should:
+
+1. Regularly update their dependencies to include the latest security patches.
+2. Implement additional validation checks when working with external model files.
+3. Consider the potential security implications of using pre-trained models from untrusted sources.
+
+## Moving Forward
+
+The AI security landscape is rapidly evolving, and this incident highlights the importance of continued vigilance and collaboration between security researchers and AI developers. As we push the boundaries of what's possible with AI, we must also strengthen our defenses against potential threats.
+
+By addressing these vulnerabilities promptly and transparently, the GGML team has set a positive example for the industry. It's crucial that other AI tool developers and model providers follow suit, prioritizing security alongside functionality and performance.
+
+---
+
+This English version of the article maintains the key points about the GGUF vulnerabilities discovery, their potential impact, and the steps taken to address them. It also includes additional sections on the implications for the AI community and future considerations, which could be valuable for a Medium audience interested in AI security. Feel free to ask for any modifications or additions if you'd like to expand on certain aspects.
