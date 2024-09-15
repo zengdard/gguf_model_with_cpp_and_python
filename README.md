@@ -1,6 +1,7 @@
 # LlamaTranslator
 
-LlamaTranslator is a Python library that uses the Llama model to perform text translations. It offers individual and batch translation capabilities, as well as the ability to process entire books.
+LlamaTranslator is a Python library that uses the Llama model to perform text translations. It offers individual and batch translation capabilities, as well as the ability to process entire books. Source From llama.c .
+
 
 ## Features
 
